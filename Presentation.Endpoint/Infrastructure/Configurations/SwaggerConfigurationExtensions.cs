@@ -13,14 +13,13 @@ namespace Presentation.Endpoint.Infrastructure.Configurations
             services.AddSwaggerGen();
         }
 
-        public static void UseCustomSwagger(this IApplicationBuilder app)
+        public static void UseCustomSwagger(this IApplicationBuilder app, string url)
         {
-
             app.UseSwagger();
             app.UseSwaggerUI(option =>
             {
                 option.SwaggerEndpoint("/swagger/v1/swagger.json", "Sharp API V1");
-                option.RoutePrefix = string.Empty;
+                option.RoutePrefix = url;
             });
 
         }

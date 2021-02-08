@@ -1,4 +1,6 @@
+using Core.Abstraction.ApplicationService.Common;
 using Infrastructure.Implementation.ApplicationService;
+using Infrastructure.Implementation.ApplicationService.Common;
 using Infrastructure.Implementation.DataAccessLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,18 +13,20 @@ namespace Presentation.Endpoint
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        private readonly SiteSettings _SiteSettings;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _SiteSettings = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDataAccessLayerServices("Data Source =.; Initial Catalog =MyResumeDatabase ; Integrated Security = true");
-            services.AddCustomIdentity();
+            services.AddDataAccessLayerServices(_SiteSettings.dataBaseConectionString);
+            services.AddCustomIdentity(_SiteSettings.identitySettings);
+            services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
             services.AddApplicationServices();
             services.AddControllers();
             services.AddSwaggerServices();
@@ -46,7 +50,7 @@ namespace Presentation.Endpoint
             {
                 endpoints.MapControllers();
             });
-            app.UseCustomSwagger();
+            app.UseCustomSwagger(_SiteSettings.swaggerRoutePrefix);
         }
     }
 }

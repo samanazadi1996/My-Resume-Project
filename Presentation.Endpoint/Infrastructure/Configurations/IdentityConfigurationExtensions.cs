@@ -1,4 +1,5 @@
 ﻿using Infrastructure.DomainModel.Identity;
+using Infrastructure.Implementation.ApplicationService.Common;
 using Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,19 +8,19 @@ namespace Presentation.Endpoint.Infrastructure.Configurations
 {
     public static class IdentityConfigurationExtensions
     {
-        public static void AddCustomIdentity(this IServiceCollection services/*, IdentitySettings settings*/)
+        public static void AddCustomIdentity(this IServiceCollection services, IdentitySettings settings)
         {
             services.AddIdentity<ApplicationUser, ApplicationRole>(identityOptions =>
             {
                 //Password Settings
-                identityOptions.Password.RequireDigit = false;           /* settings.PasswordRequireDigit;*/
-                identityOptions.Password.RequiredLength = 5;       /* settings.PasswordRequiredLength;*/
-                identityOptions.Password.RequireNonAlphanumeric = false;  /* settings.PasswordRequireNonAlphanumic; //#@!*/
-                identityOptions.Password.RequireUppercase = false;       /* settings.PasswordRequireUppercase;*/
-                identityOptions.Password.RequireLowercase = false;      /* settings.PasswordRequireLowercase;*/
+                identityOptions.Password.RequireDigit = settings.PasswordRequireDigit;
+                identityOptions.Password.RequiredLength = settings.PasswordRequiredLength;
+                identityOptions.Password.RequireNonAlphanumeric = settings.PasswordRequireNonAlphanumic;
+                identityOptions.Password.RequireUppercase = settings.PasswordRequireUppercase;
+                identityOptions.Password.RequireLowercase = settings.PasswordRequireLowercase;
 
                 //UserName Settings
-                identityOptions.User.RequireUniqueEmail = true;         /* settings.RequireUniqueEmail;*/
+                identityOptions.User.RequireUniqueEmail = settings.RequireUniqueEmail;
 
                 //Singin Settings
                 //identityOptions.SignIn.RequireConfirmedEmail = false;
