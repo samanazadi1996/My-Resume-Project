@@ -1,4 +1,4 @@
-﻿using Infrastructure.DomainModel.Identity;
+﻿using Core.DomainModel.Identity;
 using Infrastructure.Implementation.ApplicationService.Common;
 using Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Identity;

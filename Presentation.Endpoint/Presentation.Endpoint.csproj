@@ -17,9 +17,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Core.Abstraction.ApplicationService\Core.Abstraction.ApplicationService.csproj" />
     <ProjectReference Include="..\Core.Abstraction.DataAccessLayer\Core.Abstraction.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Core.DomainModel\Core.DomainModel.csproj" />
     <ProjectReference Include="..\Infrastructure.ApplicationService\Infrastructure.Implementation.ApplicationService.csproj" />
     <ProjectReference Include="..\Infrastructure.DataAccessLayer\Infrastructure.Implementation.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\Infrastructure.DomainModel\Infrastructure.DomainModel.csproj" />
     <ProjectReference Include="..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
   </ItemGroup>
 

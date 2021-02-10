@@ -1,5 +1,5 @@
-﻿using Infrastructure.DomainModel.Common;
-using Infrastructure.DomainModel.Identity;
+﻿using Core.DomainModel.Common;
+using Core.DomainModel.Identity;
 using Infrastructure.Persistence.Extentions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

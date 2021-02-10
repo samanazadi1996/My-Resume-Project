@@ -1,7 +1,7 @@
 ﻿namespace Infrastructure.Implementation.DataAccessLayer
 {
     using Core.Abstraction.DataAccessLayer;
-    using Infrastructure.DomainModel.Common;
+    using Core.DomainModel.Common;
     using Infrastructure.Persistence;
     using Infrastructure.Persistence.Context;
     using Microsoft.EntityFrameworkCore;

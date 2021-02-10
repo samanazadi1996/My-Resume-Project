@@ -70,6 +70,29 @@ namespace Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Articles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicationUserId = table.Column<int>(type: "int", nullable: false),
+                    InsertDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeleteDateTime = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Articles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Articles_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -155,6 +178,11 @@ namespace Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Articles_ApplicationUserId",
+                table: "Articles",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
@@ -196,6 +224,9 @@ namespace Infrastructure.Persistence.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Articles");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 

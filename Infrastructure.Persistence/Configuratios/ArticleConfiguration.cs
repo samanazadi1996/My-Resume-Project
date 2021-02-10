@@ -1,4 +1,4 @@
-﻿using Infrastructure.DomainModel.ArticleModels;
+﻿using Core.DomainModel.ArticleModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

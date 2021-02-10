@@ -1,6 +1,6 @@
 ﻿using Core.Abstraction.DataAccessLayer;
-using Infrastructure.DomainModel.ArticleModels;
-using Infrastructure.DomainModel.Identity;
+using Core.DomainModel.ArticleModels;
+using Core.DomainModel.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

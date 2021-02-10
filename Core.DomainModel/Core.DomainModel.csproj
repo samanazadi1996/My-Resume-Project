@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.2" />
   </ItemGroup>
 
 </Project>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210208164615_V1")]
-    partial class V1
+    [Migration("20210210124812_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Infrastructure.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("Infrastructure.DomainModel.ArticleModels.Article", b =>
+            modelBuilder.Entity("Core.DomainModel.ArticleModels.Article", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("Infrastructure.DomainModel.Identity.ApplicationRole", b =>
+            modelBuilder.Entity("Core.DomainModel.Identity.ApplicationRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Infrastructure.DomainModel.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Core.DomainModel.Identity.ApplicationUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -247,9 +247,9 @@ namespace Infrastructure.Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Infrastructure.DomainModel.ArticleModels.Article", b =>
+            modelBuilder.Entity("Core.DomainModel.ArticleModels.Article", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Core.DomainModel.Identity.ApplicationUser", "ApplicationUser")
                         .WithMany("Articles")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -260,7 +260,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationRole", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -269,7 +269,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationUser", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -278,7 +278,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationUser", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -287,13 +287,13 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationRole", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationUser", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -302,14 +302,14 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("Infrastructure.DomainModel.Identity.ApplicationUser", null)
+                    b.HasOne("Core.DomainModel.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Infrastructure.DomainModel.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Core.DomainModel.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("Articles");
                 });
