@@ -1,4 +1,5 @@
-﻿using Core.Abstraction.DataAccessLayer;
+﻿using Core.Abstraction.ApplicationService.AccountDomain;
+using Core.Abstraction.DataAccessLayer;
 using Core.DomainModel.ArticleModels;
 using Core.DomainModel.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -17,16 +18,19 @@ namespace Presentation.Endpoint.Controllers
     {
         private readonly IUnitOfWork<Article> unitOfWork;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IAccountService accountService;
 
-        public HomeController(IUnitOfWork<Article> unitOfWork, UserManager<ApplicationUser> userManager)
+        public HomeController(IUnitOfWork<Article> unitOfWork, UserManager<ApplicationUser> userManager, IAccountService accountService)
         {
             this.unitOfWork = unitOfWork;
             this.userManager = userManager;
+            this.accountService = accountService;
         }
         // GET: api/<HomeController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<string>> Get()
         {
+            var op = await accountService.GetUserByUserName("admin@admin.com");
             var ppp = userManager.Users.Include(p => p.Articles).ToList();
             var appp = unitOfWork.Repository.Get().Include(p => p.ApplicationUser).ToList();
 

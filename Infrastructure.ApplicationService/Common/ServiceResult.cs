@@ -12,9 +12,9 @@ namespace Infrastructure.Implementation.ApplicationService.Common
 {
     public class ServiceResult<TData> : IServiceResult<TData>
     {
-        public override TData Data { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string ErrorMessage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override bool IsSuccess { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override TData Data { get; set; }
+        public override string ErrorMessage { get; set; }
+        public override bool IsSuccess { get; set; }
 
         public override IServiceResult<TData> Fail(string errorMessage)
         {
