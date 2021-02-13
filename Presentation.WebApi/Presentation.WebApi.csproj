@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Abstraction.ApplicationService\Core.Abstraction.ApplicationService.csproj" />
+    <ProjectReference Include="..\Core.Abstraction.DataAccessLayer\Core.Abstraction.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Core.DomainModel\Core.DomainModel.csproj" />
+    <ProjectReference Include="..\Infrastructure.ApplicationService\Infrastructure.Implementation.ApplicationService.csproj" />
+    <ProjectReference Include="..\Infrastructure.DataAccessLayer\Infrastructure.Implementation.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
+
+</Project>

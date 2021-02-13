@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Presentation.Endpoint.Infrastructure.Configurations
+namespace Presentation.WebApi.Infrastructure.Configurations
 {
     public static class SwaggerConfigurationExtensions
     {

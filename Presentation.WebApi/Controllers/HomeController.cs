@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Presentation.Endpoint.Controllers
+namespace Presentation.WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

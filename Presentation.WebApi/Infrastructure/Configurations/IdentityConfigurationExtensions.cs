@@ -4,7 +4,7 @@ using Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Presentation.Endpoint.Infrastructure.Configurations
+namespace Presentation.WebApi.Infrastructure.Configurations
 {
     public static class IdentityConfigurationExtensions
     {
