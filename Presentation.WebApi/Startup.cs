@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Presentation.WebApi.Infrastructure.Configurations;
+using Presentation.WebApi.Models.Configurations;
 
 namespace Presentation.WebApi
 {
@@ -49,6 +49,7 @@ namespace Presentation.WebApi
             {
                 endpoints.MapControllers();
             });
+
             app.UseCustomSwagger(_SiteSettings.swaggerRoutePrefix);
         }
     }

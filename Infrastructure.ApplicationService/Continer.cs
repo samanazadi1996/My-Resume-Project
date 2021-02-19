@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Implementation.ApplicationService.AccountDomain;
+using Infrastructure.Implementation.ApplicationService.ArticleDomain;
 using Infrastructure.Implementation.ApplicationService.Common;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ namespace Infrastructure.Implementation.ApplicationService
         {
             services.AddCommonService();
             services.AddAccountDomainService();
+            services.AddArticleDomainService();
             return services;
         }
     }

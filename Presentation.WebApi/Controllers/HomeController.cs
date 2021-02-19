@@ -1,10 +1,12 @@
 ﻿using Core.Abstraction.ApplicationService.AccountDomain;
+using Core.Abstraction.ApplicationService.ArticleDomain;
 using Core.Abstraction.DataAccessLayer;
 using Core.DomainModel.ArticleModels;
 using Core.DomainModel.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Presentation.WebApi.Models.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,25 +18,19 @@ namespace Presentation.WebApi.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        private readonly IUnitOfWork<Article> unitOfWork;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IAccountService accountService;
+        private readonly IGetArticleService getArticleService;
 
-        public HomeController(IUnitOfWork<Article> unitOfWork, UserManager<ApplicationUser> userManager, IAccountService accountService)
+        public HomeController(IGetArticleService getArticleService)
         {
-            this.unitOfWork = unitOfWork;
-            this.userManager = userManager;
-            this.accountService = accountService;
+            this.getArticleService = getArticleService;
         }
-        // GET: api/<HomeController>
-        [HttpGet]
-        public async Task<IEnumerable<string>> Get()
-        {
-            var op = await accountService.GetUserByUserName("admin@admin.com");
-            var ppp = userManager.Users.Include(p => p.Articles).ToList();
-            var appp = unitOfWork.Repository.Get().Include(p => p.ApplicationUser).ToList();
 
-            return new string[] { "value1", "value2" };
+        [HttpGet]
+
+        public async Task<ApiResult<IList<Article>>> Index()
+        {
+            var result = (await getArticleService.GetAll()).Data;
+            return result;
         }
 
         // GET api/<HomeController>/5

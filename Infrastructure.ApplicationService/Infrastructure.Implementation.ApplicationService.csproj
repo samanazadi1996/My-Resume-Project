@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Abstraction.ApplicationService\Core.Abstraction.ApplicationService.csproj" />
+    <ProjectReference Include="..\Core.Abstraction.DataAccessLayer\Core.Abstraction.DataAccessLayer.csproj" />
     <ProjectReference Include="..\Core.DomainModel\Core.DomainModel.csproj" />
   </ItemGroup>
 
